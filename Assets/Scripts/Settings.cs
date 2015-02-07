@@ -4,8 +4,11 @@ using System.Collections;
 public static class Settings{
 
 	//------|  Player  |------\\
-		public static float playerSpeed;
-		public static float playerRotSpeed;
+		public static float playerSpeed = 10;
+		public static float playerRotSpeed = 10;
+
+		public static float slowedPlayerSpeed = 5;
+		public static float slowedPlayerRotSpeed = 5;
 
 
 	//------|  Tail  |------\\
@@ -15,6 +18,8 @@ public static class Settings{
 	//------|  Trail  |------\\
 		public static float decayLength = 2f;
 		public static float decayDistance = 1f;
+
+		public static float slowLength = 1f;
 
 
 	//------|    |------\\
