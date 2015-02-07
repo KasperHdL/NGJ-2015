@@ -43,8 +43,12 @@ public class playerMovement : MonoBehaviour {
 				}
 		}
 		void OnTriggerEnter(Collider other){
-			if(other.gameObject.tag == "Wall"){
-				transform.Rotate(0,180,0);
-			}
+				if (other.gameObject.tag == "Wall") {
+						transform.Rotate (0, 180, 0);
+			OnJointBreak();
+				}
 		}
-}
+
+	void OnJointBreak() {
+		}
+		}
