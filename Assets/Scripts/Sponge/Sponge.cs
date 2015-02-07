@@ -34,6 +34,12 @@ public class Sponge : MonoBehaviour {
 			instantTrail();
 			amountFilled -= decayCost;
 		}
+
+		if(Settings.dash){
+			decayCost = Settings.drainSpeedPerDashTrail;
+		} else {
+			decayCost = Settings.drainSpeedPerTrail;
+		}
 	}
 
 	//instants a trail on the currentposition

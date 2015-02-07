@@ -64,6 +64,13 @@ public class playerMovement : MonoBehaviour {
 			slowed = false;
 			speed = Settings.playerSpeed;
 		}
+
+		if(Input.GetButton (player_name + "_dash")){
+			Dash();
+		} else {
+			speed = Settings.playerSpeed;
+		}
+
 	}
 	void OnTriggerEnter(Collider other){
 			if (other.gameObject.tag == "Wall") {
@@ -97,4 +104,10 @@ public class playerMovement : MonoBehaviour {
 			Debug.Log ("Detection");
 		}
 	}
+
+	void Dash(){
+		Settings.dash = true;
+		speed = Settings.playerDashSpeed;
+	}
+
 }

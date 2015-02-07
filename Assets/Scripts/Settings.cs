@@ -7,6 +7,7 @@ public static class Settings{
 		public static float playerHealth = 10f;
 
 		public static float playerSpeed = 10f;
+		public static float playerDashSpeed = 15f;
 		public static float playerRotSpeed = 100f;
 
 		public static float playerOnEnemyTrailSpeed = 5f;
@@ -16,6 +17,9 @@ public static class Settings{
 		public static float playerOnFriendlyTrailSpeedLength = 1f;
 
 		public static float drainSpeedPerTrail = 1f;
+		public static float drainSpeedPerDashTrail = 1.5f;
+
+		public static bool dash = false;
 
 	//------|  Tail/Sponge/Follower  |------\\
 		public static int followSpeed = 20;
