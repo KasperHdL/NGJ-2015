@@ -106,7 +106,7 @@ public class playerMovement : MonoBehaviour {
 	}
 
 	void Dash(){
-		Settings.dash = true;
+		sponge.dash = true;
 		speed = Settings.playerDashSpeed;
 	}
 
