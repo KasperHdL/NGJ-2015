@@ -410,7 +410,7 @@ GameObject:
   - 233: {fileID: 299360756}
   m_Layer: 0
   m_Name: ChainLink
-  m_TagString: Untagged
+  m_TagString: Joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -460,7 +460,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 299360755}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!23 &299360759
@@ -784,6 +784,14 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
+      propertyPath: m_TagString
+      value: Joint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
   m_RootGameObject: {fileID: 299360755}
@@ -820,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f5cbad3b7fac24792ffda922a9ab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countSpeed: 5
+  refillSpeed: 0
 --- !u!23 &589490735
 Renderer:
   m_ObjectHideFlags: 0
@@ -1049,7 +1057,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 930452265}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Radius: .500000417
   m_Center: {x: 5.96046874e-08, y: 0}
 --- !u!114 &930452267
@@ -1064,7 +1072,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc8c96c4a593bc4c9eb3b990608c349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_name: P1
   slider: {fileID: 1580853831}
+  sponge: {fileID: 0}
+  health: 0
 --- !u!23 &930452268
 Renderer:
   m_ObjectHideFlags: 0
@@ -1216,7 +1227,6 @@ GameObject:
   - 33: {fileID: 1090151283}
   - 23: {fileID: 1090151281}
   - 61: {fileID: 1090151285}
-  - 65: {fileID: 1090151282}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -1245,19 +1255,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1090151282
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6557650, guid: 414db3bd496143343884202fa006c409,
-    type: 2}
-  m_PrefabInternal: {fileID: 2069828596}
-  m_GameObject: {fileID: 1090151280}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1090151283
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1301,7 +1298,6 @@ GameObject:
   - 33: {fileID: 1136203843}
   - 23: {fileID: 1136203841}
   - 61: {fileID: 1136203845}
-  - 65: {fileID: 1136203842}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -1330,19 +1326,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1136203842
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6557650, guid: 414db3bd496143343884202fa006c409,
-    type: 2}
-  m_PrefabInternal: {fileID: 536133741}
-  m_GameObject: {fileID: 1136203840}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1136203843
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1386,7 +1369,6 @@ GameObject:
   - 33: {fileID: 1171412868}
   - 23: {fileID: 1171412866}
   - 61: {fileID: 1171412870}
-  - 65: {fileID: 1171412867}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -1415,19 +1397,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &1171412867
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6557650, guid: 414db3bd496143343884202fa006c409,
-    type: 2}
-  m_PrefabInternal: {fileID: 418695398}
-  m_GameObject: {fileID: 1171412865}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1171412868
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1771,6 +1740,14 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
+      propertyPath: m_TagString
+      value: Joint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
   m_RootGameObject: {fileID: 1879465852}
@@ -1791,7 +1768,7 @@ GameObject:
   - 233: {fileID: 1879465853}
   m_Layer: 0
   m_Name: ChainLink
-  m_TagString: Untagged
+  m_TagString: Joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1841,7 +1818,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1879465852}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Size: {x: 1, y: 1}
   m_Center: {x: 0, y: 0}
 --- !u!23 &1879465856
@@ -2010,7 +1987,6 @@ GameObject:
   - 33: {fileID: 2054637774}
   - 23: {fileID: 2054637772}
   - 61: {fileID: 2054637776}
-  - 65: {fileID: 2054637773}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -2039,19 +2015,6 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &2054637773
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6557650, guid: 414db3bd496143343884202fa006c409,
-    type: 2}
-  m_PrefabInternal: {fileID: 884041085}
-  m_GameObject: {fileID: 2054637771}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &2054637774
 MeshFilter:
   m_ObjectHideFlags: 0
