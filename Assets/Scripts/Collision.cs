@@ -12,4 +12,11 @@ public class Collision : MonoBehaviour {
 	void Update () {
 	
 	}
+	void OnTriggerEnter(Collider other){
+		//if(other.gameObject.tag == ){
+		//Component.Destroy(yourComponent); 
+		HingeJoint[] joints = GetComponents<HingeJoint>();
+		foreach (HingeJoint joint in joints)
+		Destroy(joint);
+	}
 }
