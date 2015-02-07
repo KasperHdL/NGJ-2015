@@ -44,7 +44,7 @@ public class playerMovement : MonoBehaviour {
 		float hori = Input.GetAxis(player_name + "_hori");
 		transform.Rotate (hori * rotationSpeed, 0, 0);
 
-		//rigidbody2D.velocity = transform.forward * speed;
+		rigidbody2D.velocity = transform.forward * speed;
 		slider.value = health;
 
 		if(speedup && speedupEnd < Time.time){
