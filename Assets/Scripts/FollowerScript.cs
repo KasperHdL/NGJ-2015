@@ -20,11 +20,7 @@ public class FollowerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-<<<<<<< HEAD
 		/*tail.rigidbody.velocity *= 0.99f;
-=======
-		tail.rigidbody.velocity *= 0.99f;
->>>>>>> 4456093e4cc6ebe9edd2221343d466a24e76e5e1
 
 		Debug.DrawLine(tail.position, player.position, Color.white, 0.0f);
 
