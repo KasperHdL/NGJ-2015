@@ -4,7 +4,8 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour {
 
-	public string name;
+	//used to refer to input keys
+	public string player_name;
 
 	public static int health = 50;
 
@@ -21,12 +22,9 @@ public class playerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//player movement
-		if (Input.GetKey (KeyCode.A)) {
-			transform.Rotate (-rotationSpeed, 0, 0);
-		}
-		if (Input.GetKey (KeyCode.D)) {
-			transform.Rotate (rotationSpeed, 0, 0);
-		}
+		float hori = Input.GetAxis(name + "_hori");
+		transform.Rotate (hori * rotationSpeed, 0, 0);
+
 		rigidbody2D.velocity = transform.forward * speed;
 		slider.value = health;
 
