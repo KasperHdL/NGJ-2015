@@ -3,8 +3,9 @@ using System.Collections;
 
 public class SpongeDecay : MonoBehaviour {
 
-
+	public GameObject owner;
 	public GameObject trail_prefab;
+	public Transform trail_container;
 	private float trailDecayLength;
 
 	private float distBetweenTrails;
@@ -31,9 +32,11 @@ public class SpongeDecay : MonoBehaviour {
 		Vector3 pos = transform.position;
 		lastPlacedTrailPos = pos;
 		GameObject g = Instantiate(trail_prefab,pos,Quaternion.identity) as GameObject;
-
+		g.transform.parent = trail_container;
 		//sets how long the trail will live
 		Trail t = g.GetComponent<Trail>();
+		t.setOwner(owner);
 		t.setDecayLength(trailDecayLength);
+
 	}
 }

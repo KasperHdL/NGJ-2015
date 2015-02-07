@@ -4,6 +4,8 @@ using System.Collections;
 public static class Settings{
 
 	//------|  Player  |------\\
+		public static float playerSpeed;
+		public static float playerRotSpeed;
 
 
 	//------|  Tail  |------\\
