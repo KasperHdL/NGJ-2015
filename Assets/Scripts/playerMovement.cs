@@ -89,4 +89,12 @@ public class playerMovement : MonoBehaviour {
 
 		speed = Settings.playerOnFriendlyTrailSpeed;
 	}
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.gameObject.tag == "Joint") {
+			
+			other.gameObject.GetComponent<HingeJoint2D>().connectedBody = null;
+
+			Debug.Log ("Detection");
+		}
+	}
 }
