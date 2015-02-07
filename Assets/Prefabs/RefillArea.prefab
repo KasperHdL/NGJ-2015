@@ -9,9 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 460186}
   - 33: {fileID: 3360186}
-  - 65: {fileID: 6560186}
   - 23: {fileID: 2360186}
   - 114: {fileID: 11460186}
+  - 61: {fileID: 6100000}
+  - 65: {fileID: 6560186}
   m_Layer: 0
   m_Name: RefillArea
   m_TagString: Player
@@ -58,9 +59,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160186}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &6100000
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160186}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 1, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!65 &6560186
 BoxCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 160186}
