@@ -19,8 +19,8 @@ public class FollowerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		tail.rigidbody.velocity *= 0.99f;
+
+		/*tail.rigidbody.velocity *= 0.99f;
 
 		Debug.DrawLine(tail.position, player.position, Color.white, 0.0f);
 
@@ -30,7 +30,6 @@ public class FollowerScript : MonoBehaviour {
 
 		if(Vector2.Distance(player.position, tail.position) > chain){
 			tail.rigidbody.AddForce(tail.forward * speed);
-
-		}
+		}*/
 	}
 }
