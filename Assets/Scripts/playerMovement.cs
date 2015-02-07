@@ -7,9 +7,9 @@ public class playerMovement : MonoBehaviour {
 	//used to refer to input keys
 	public string player_name;
 
-	public static int health = 50;
-
 	public Slider slider;
+
+	public float health;
 
 	private float rotationSpeed;
 	private float speed;
@@ -21,6 +21,7 @@ public class playerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		health = Settings.playerHealth;
 		slowLength = Settings.slowLength;
 		speed = Settings.playerSpeed;
 		rotationSpeed = Settings.playerRotSpeed;
@@ -39,18 +40,6 @@ public class playerMovement : MonoBehaviour {
 				slowed = false;
 				speed = Settings.slowedPlayerSpeed;
 				rotationSpeed = Settings.slowedPlayerRotSpeed;
-		}
-
-		//debug for healthbar slider
-		if (health <= 100) {
-				if (Input.GetKey (KeyCode.Q)) {
-						health += 1;
-				}
-		}
-		if (health >= 0) {
-				if (Input.GetKey (KeyCode.E)) {
-						health -= 1;
-				}
 		}
 	}
 	void OnTriggerEnter(Collider other){

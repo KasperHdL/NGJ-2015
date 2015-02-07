@@ -2,18 +2,26 @@
 using System.Collections;
 
 public class RefillArea : MonoBehaviour {
-	public int countSpeed = 5;
+	int countSpeed = 5;
 	int countNum = 0;
+
+	public float refillSpeed;
+
+	void Start(){
+		refillSpeed = Settings.refillSpeed;
+	}
 
 	void OnTriggerStay2D(Collider2D other){
 		if (other.gameObject.tag == "Follower") {
 			if (countNum > countSpeed) {
-				if(playerMovement.health<100){
-					playerMovement.health = playerMovement.health + 1;
+				Sponge sponge = other.gameObject.GetComponent<Sponge>();
+
+				if(sponge.amountFilled < Settings.spongeCapacity){
+					sponge.amountFilled += refillSpeed;
 				}
 				countNum = 0;
 			}
 			countNum++;
-			}
+		}
 	}
 }

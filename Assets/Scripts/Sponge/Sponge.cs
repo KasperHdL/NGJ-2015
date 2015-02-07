@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpongeDecay : MonoBehaviour {
-
+public class Sponge : MonoBehaviour {
+	//references
 	public GameObject owner;
 	public GameObject trail_prefab;
 	public Transform trail_container;
+
+	//how long
 	private float trailDecayLength;
+	private float decayCost;
+
+	public float amountFilled;
 
 	private float distBetweenTrails;
 	private Vector3 lastPlacedTrailPos;
@@ -16,14 +21,18 @@ public class SpongeDecay : MonoBehaviour {
 		trailDecayLength = Settings.decayLength;
 		distBetweenTrails = Settings.decayDistance;
 		lastPlacedTrailPos = transform.position;
+
+		amountFilled = Settings.spongeCapacity;
+		decayCost = Settings.drainSpeedPerTrail;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		//check distance to last placed trail if greater then a set value then instantiate a new
 		float dist = Vector3.Distance(lastPlacedTrailPos,transform.position);
-		if(dist > distBetweenTrails){
+		if(dist > distBetweenTrails && amountFilled >= 0){
 			instantTrail();
+			amountFilled -= decayCost;
 		}
 	}
 

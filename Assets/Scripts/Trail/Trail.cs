@@ -24,4 +24,11 @@ public class Trail : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D coll){
+		if(coll.gameObject.tag == "Player"){
+			coll.gameObject.GetComponent<playerMovement>().startSlow();
+			Destroy(this.gameObject);
+		}
+	}
 }
