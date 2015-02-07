@@ -37,6 +37,8 @@ public class playerMovement : MonoBehaviour {
 
 		speed = Settings.playerSpeed;
 		rotationSpeed = Settings.playerRotSpeed;
+
+		setupJointParents();
 	}
 
 	// Update is called once per frame
@@ -65,16 +67,6 @@ public class playerMovement : MonoBehaviour {
 			speed = Settings.playerSpeed;
 		}
 	}
-	void OnTriggerEnter(Collider other){
-			if (other.gameObject.tag == "Wall") {
-				transform.Rotate (0, 180, 0);
-				OnJointBreak();
-			}
-	}
-
-	void OnJointBreak() {
-
-	}
 
 	public void startSlow(){
 		slowEnd = Time.time + slowLength;
@@ -89,12 +81,31 @@ public class playerMovement : MonoBehaviour {
 
 		speed = Settings.playerOnFriendlyTrailSpeed;
 	}
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "Joint") {
-			
-			other.gameObject.GetComponent<HingeJoint2D>().connectedBody = null;
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Joint" && other.transform.parent.gameObject.name != player_name + " Chain") {
+			other.gameObject.GetComponent<JointConnection>().breakJoint();
 
-			Debug.Log ("Detection");
 		}
+	}
+
+
+	void setupJointParents(){
+		HingeJoint2D lastJoint = GetComponent<HingeJoint2D>();//starts with being the head
+		HingeJoint2D currentJoint = lastJoint.connectedBody.GetComponent<HingeJoint2D>();
+
+		while(true){
+
+			currentJoint.GetComponent<JointConnection>().parentJoint = lastJoint;
+
+			if(currentJoint.connectedBody.gameObject.tag == "Follower"){
+				currentJoint.connectedBody.GetComponent<Sponge>().parentJoint = currentJoint;
+				break;
+			}
+
+			lastJoint = currentJoint;
+			currentJoint = currentJoint.connectedBody.GetComponent<HingeJoint2D>();
+		}
+
+
 	}
 }

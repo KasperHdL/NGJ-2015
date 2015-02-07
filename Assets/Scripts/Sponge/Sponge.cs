@@ -7,7 +7,10 @@ public class Sponge : MonoBehaviour {
 	public GameObject trail_prefab;
 	public Transform trail_container;
 
-	//how long
+	public HingeJoint2D parentJoint;
+
+
+	//how long between each trail
 	private float trailDecayLength;
 	private float decayCost;
 

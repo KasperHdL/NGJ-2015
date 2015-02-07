@@ -28,7 +28,7 @@ public static class Settings{
 		public static float decayLength = 2f;
 		public static float decayDistance = .7f;
 
-
+		public static float jointLockdownLength = 1f;
 
 	//------|  Refiller  |------\\
 
