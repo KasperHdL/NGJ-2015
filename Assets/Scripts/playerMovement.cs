@@ -14,8 +14,9 @@ public class playerMovement : MonoBehaviour {
 
 	public float health;
 
-	private float rotationSpeed;
-	private float speed;
+	public float rotationSpeed;
+	public float maxRotSpeed = 5f;
+	public float speed;
 
 	//slow vars
 	private bool slowed = false;
@@ -40,11 +41,18 @@ public class playerMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//player movement
+		//get player movement
 		float hori = Input.GetAxis(player_name + "_hori");
-		transform.Rotate (hori * rotationSpeed, 0, 0);
+		float vert = Input.GetAxis(player_name + "_vert");
 
-		rigidbody2D.velocity = transform.forward * speed;
+		//contrain rotation (if angular vel is greater than max allowed set to max angular vel else add torque)
+		if(Mathf.Abs(rigidbody2D.angularVelocity) > maxRotSpeed)
+			rigidbody2D.angularVelocity = Mathf.Sign(rigidbody2D.rotation) * maxRotSpeed;
+		else
+			rigidbody2D.AddTorque(-hori * rotationSpeed);
+
+		//add vel
+		rigidbody2D.velocity = -transform.right * vert * speed;
 		slider.value = health;
 
 		if(speedup && speedupEnd < Time.time){
@@ -55,7 +63,6 @@ public class playerMovement : MonoBehaviour {
 		if(slowed && slowEnd < Time.time){
 			slowed = false;
 			speed = Settings.playerSpeed;
-			rotationSpeed = Settings.playerRotSpeed;
 		}
 	}
 	void OnTriggerEnter(Collider other){
@@ -74,7 +81,6 @@ public class playerMovement : MonoBehaviour {
 		slowed = true;
 
 		speed = Settings.playerOnEnemyTrailSpeed;
-		rotationSpeed = Settings.playerOnEnemyTrailRotSpeed;
 	}
 
 	public void startSpeed(){

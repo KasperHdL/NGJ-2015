@@ -7,10 +7,9 @@ public static class Settings{
 		public static float playerHealth = 10f;
 
 		public static float playerSpeed = 10f;
-		public static float playerRotSpeed = 4f;
+		public static float playerRotSpeed = 100f;
 
 		public static float playerOnEnemyTrailSpeed = 5f;
-		public static float playerOnEnemyTrailRotSpeed = 4f;
 		public static float playerOnEnemyTrailSpeedLength = 1f;
 
 		public static float playerOnFriendlyTrailSpeed = 15f;
