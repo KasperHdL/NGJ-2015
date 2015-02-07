@@ -20,14 +20,14 @@ public class playerMovement : MonoBehaviour {
 	void Update () {
 				//player movement
 				if (Input.GetKey (KeyCode.A)) {
-						transform.Rotate (0, -rotationSpeed, 0);
+			transform.Rotate (-rotationSpeed, 0, 0);
 						Debug.Log (transform.rotation.y);
 				}
 				if (Input.GetKey (KeyCode.D)) {
-						transform.Rotate (0, rotationSpeed, 0);
+			transform.Rotate (rotationSpeed, 0, 0);
 						Debug.Log (transform.rotation.y);
 				}
-				rigidbody.velocity = transform.forward * speed;
+				rigidbody2D.velocity = transform.forward * speed;
 				slider.value = health;
 
 				//debug for healthbar slider
