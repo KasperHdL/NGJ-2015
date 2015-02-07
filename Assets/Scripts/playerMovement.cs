@@ -16,38 +16,24 @@ public class playerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-<<<<<<< HEAD
 		//player movement
-		float hori = Input.GetAxis(name + "_hori");
+		float hori = Input.GetAxis(player_name + "_hori");
 		transform.Rotate (hori * rotationSpeed, 0, 0);
 
 		rigidbody2D.velocity = transform.forward * speed;
 		slider.value = health;
-=======
-				//player movement
-				if (Input.GetKey (KeyCode.A)) {
-			transform.Rotate (-rotationSpeed, 0, 0);
-						Debug.Log (transform.rotation.y);
-				}
-				if (Input.GetKey (KeyCode.D)) {
-			transform.Rotate (rotationSpeed, 0, 0);
-						Debug.Log (transform.rotation.y);
-				}
-				rigidbody2D.velocity = transform.forward * speed;
-				slider.value = health;
->>>>>>> 122df91dda55efa2abea946669f414a96b388f80
 
 				//debug for healthbar slider
 				if (health <= 100) {
 						if (Input.GetKey (KeyCode.Q)) {
 								health += 1;
 						}
-				}	
+				}
 				if (health >= 0) {
 						if (Input.GetKey (KeyCode.E)) {
 								health -= 1;
@@ -56,15 +42,13 @@ public class playerMovement : MonoBehaviour {
 		}
 		void OnTriggerEnter(Collider other){
 				if (other.gameObject.tag == "Wall") {
-						transform.Rotate (0, 180, 0);
-			OnJointBreak();
+					transform.Rotate (0, 180, 0);
+					OnJointBreak();
 				}
 		}
 
 	void OnJointBreak() {
-		}
-		}
-=======
+
 	}
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag == "Wall"){
@@ -72,4 +56,3 @@ public class playerMovement : MonoBehaviour {
 		}
 	}
 }
->>>>>>> ac8f9c31bc499c7e6fc4302b8edd1e1e35f62774
