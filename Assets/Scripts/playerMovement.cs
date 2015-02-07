@@ -7,7 +7,10 @@ public class playerMovement : MonoBehaviour {
 	//used to refer to input keys
 	public string player_name;
 
+	//references
 	public Slider slider;
+	public Sponge sponge;
+
 
 	public float health;
 
@@ -19,10 +22,18 @@ public class playerMovement : MonoBehaviour {
 	private float slowEnd;
 	private float slowLength;
 
+	//speedup vars
+	private bool speedup = false;
+	private float speedupEnd;
+	private float speedupLength;
+
 	// Use this for initialization
 	void Start () {
 		health = Settings.playerHealth;
-		slowLength = Settings.slowLength;
+
+		slowLength = Settings.playerOnEnemyTrailSpeedLength;
+		speedupLength = Settings.playerOnFriendlyTrailSpeedLength;
+
 		speed = Settings.playerSpeed;
 		rotationSpeed = Settings.playerRotSpeed;
 	}
@@ -36,10 +47,15 @@ public class playerMovement : MonoBehaviour {
 		rigidbody2D.velocity = transform.forward * speed;
 		slider.value = health;
 
+		if(speedup && speedupEnd < Time.time){
+			speedup = false;
+			speed = Settings.playerSpeed;
+		}
+
 		if(slowed && slowEnd < Time.time){
-				slowed = false;
-				speed = Settings.slowedPlayerSpeed;
-				rotationSpeed = Settings.slowedPlayerRotSpeed;
+			slowed = false;
+			speed = Settings.playerSpeed;
+			rotationSpeed = Settings.playerRotSpeed;
 		}
 	}
 	void OnTriggerEnter(Collider other){
@@ -57,7 +73,14 @@ public class playerMovement : MonoBehaviour {
 		slowEnd = Time.time + slowLength;
 		slowed = true;
 
-		speed = Settings.playerSpeed;
-		rotationSpeed = Settings.playerRotSpeed;
+		speed = Settings.playerOnEnemyTrailSpeed;
+		rotationSpeed = Settings.playerOnEnemyTrailRotSpeed;
+	}
+
+	public void startSpeed(){
+		speedupEnd = Time.time + speedupLength;
+		speedup = true;
+
+		speed = Settings.playerOnFriendlyTrailSpeed;
 	}
 }

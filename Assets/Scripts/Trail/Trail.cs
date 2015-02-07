@@ -27,7 +27,13 @@ public class Trail : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if(coll.gameObject.tag == "Player"){
-			coll.gameObject.GetComponent<playerMovement>().startSlow();
+			playerMovement script = coll.gameObject.GetComponent<playerMovement>();
+			if(owner != coll.gameObject){
+				script.startSlow();
+			}else {
+				script.startSpeed();
+				script.sponge.amountFilled += Settings.drainSpeedPerTrail;
+			}
 			Destroy(this.gameObject);
 		}
 	}

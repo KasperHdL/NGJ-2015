@@ -4,13 +4,17 @@ using System.Collections;
 public static class Settings{
 
 	//------|  Player  |------\\
-		public static float playerHealth = 10;
+		public static float playerHealth = 10f;
 
-		public static float playerSpeed = 10;
-		public static float playerRotSpeed = 10;
+		public static float playerSpeed = 10f;
+		public static float playerRotSpeed = 4f;
 
-		public static float slowedPlayerSpeed = 5;
-		public static float slowedPlayerRotSpeed = 5;
+		public static float playerOnEnemyTrailSpeed = 5f;
+		public static float playerOnEnemyTrailRotSpeed = 4f;
+		public static float playerOnEnemyTrailSpeedLength = 1f;
+
+		public static float playerOnFriendlyTrailSpeed = 15f;
+		public static float playerOnFriendlyTrailSpeedLength = 1f;
 
 		public static float drainSpeedPerTrail = 1f;
 
@@ -23,14 +27,13 @@ public static class Settings{
 
 	//------|  Trail  |------\\
 		public static float decayLength = 2f;
-		public static float decayDistance = 1f;
+		public static float decayDistance = .7f;
 
-		public static float slowLength = 1f;
 
 
 	//------|  Refiller  |------\\
 
-		public static float refillSpeed = 10f;
+		public static float refillSpeed = 5f;
 
 	//------|    |------\\
 
