@@ -5,11 +5,16 @@ public class Trail : MonoBehaviour {
 
 	private bool inited = false;
 	private float decayEnd;
+	public GameObject owner;
 
 
 	public void setDecayLength(float time){
 		decayEnd = Time.time + time;
 		inited = true;
+	}
+
+	public void setOwner(GameObject o){
+		owner = o;
 	}
 
 	void Update(){

@@ -3,9 +3,11 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class playerMovement : MonoBehaviour {
-	
+
+	public string name;
+
 	public static int health = 50;
-	
+
 	public Slider slider;
 
 	public static float rotationSpeed = 5;
@@ -52,3 +54,12 @@ public class playerMovement : MonoBehaviour {
 	void OnJointBreak() {
 		}
 		}
+=======
+	}
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.gameObject.tag == "Wall"){
+			transform.Rotate(0,180,0);
+		}
+	}
+}
+>>>>>>> ac8f9c31bc499c7e6fc4302b8edd1e1e35f62774

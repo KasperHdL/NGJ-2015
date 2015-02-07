@@ -5,8 +5,8 @@ public class RefillArea : MonoBehaviour {
 	public int countSpeed = 5;
 	int countNum = 0;
 
-	void OnTriggerStay(Collider other){
-		if (other.gameObject.tag == "Player") {
+	void OnTriggerStay2D(Collider2D other){
+		if (other.gameObject.tag == "Follower") {
 			if (countNum > countSpeed) {
 				if(playerMovement.health<100){
 					playerMovement.health = playerMovement.health + 1;
