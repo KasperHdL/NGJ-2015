@@ -142,7 +142,7 @@ public class playerMovement : MonoBehaviour {
 			int i = 1;
 			while(t == null){
 				t = joints[tailLength-i++].transform;
-				if(tailLength-i++ == -1)break;
+				if(tailLength-i == -1)break;
 			}
 
 			if(dash){
