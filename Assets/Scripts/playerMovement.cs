@@ -142,7 +142,7 @@ public class playerMovement : MonoBehaviour {
 			int i = 1;
 			while(t == null){
 				t = joints[tailLength-i++].transform;
-				if(tailLength-i == -1)break;
+				if(tailLength < i)break;
 			}
 
 			if(dash){
@@ -223,6 +223,12 @@ public class playerMovement : MonoBehaviour {
 						curJoint.fillAmount = 0;
 
 				}
+			}else{
+				if(i == 0)
+					fillAmount -= .05f;
+				else
+					nextJoint.fillAmount = Settings.partFillCapacity;
+
 			}
 
 			if(joints[i].tag == "Follower"){
