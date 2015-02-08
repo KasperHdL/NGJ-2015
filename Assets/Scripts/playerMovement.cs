@@ -23,7 +23,7 @@ public class playerMovement : MonoBehaviour {
 
 	private float trailDecayLength;
 
-
+	CameraShake cam;
 
 	public float health;
 
@@ -67,7 +67,7 @@ public class playerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		cam = Camera.main.GetComponent<CameraShake>();
 		//headfill
 		fillAmount = 10;
 
@@ -318,6 +318,8 @@ public class playerMovement : MonoBehaviour {
 			}
 
 			tailLength = index+1;
+
+			cam.startShake(0.1f,0.1f);
 
 			seeker.SetActive(true);
 			seeker.transform.position = j.transform.position;

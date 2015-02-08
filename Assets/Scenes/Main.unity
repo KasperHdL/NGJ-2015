@@ -8178,6 +8178,7 @@ GameObject:
   - 92: {fileID: 1556136083}
   - 124: {fileID: 1556136082}
   - 81: {fileID: 1556136081}
+  - 114: {fileID: 1556136086}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8250,6 +8251,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1556136086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556136080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd5450a3b9e625448197aa8e82bbe12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610618573
 GameObject:
   m_ObjectHideFlags: 0
