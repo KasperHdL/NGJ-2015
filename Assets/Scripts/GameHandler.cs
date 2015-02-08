@@ -27,10 +27,17 @@ public class GameHandler : MonoBehaviour{
 	public void onStartGameClick(){
 		startScreen.SetActive(false);
 
+				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.One, 0, 0);
+				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.Two, 0, 0);
+
+
 		Time.timeScale = 1;
 	}
 
 	public static void GameOver(){
+
+				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.One, 0, 0);
+				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.Two, 0, 0);
 				Time.timeScale = 0;
 	}
 
