@@ -30,9 +30,6 @@ public class Trail : MonoBehaviour {
 			playerMovement script = coll.gameObject.GetComponent<playerMovement>();
 			if(owner != coll.gameObject){
 				script.startSlow();
-			}else {
-				script.startSpeed();
-				script.sponge.amountFilled += Settings.drainSpeedPerTrail;
 			}
 			Destroy(this.gameObject);
 		}
