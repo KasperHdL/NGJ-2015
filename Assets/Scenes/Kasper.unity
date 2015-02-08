@@ -336,8 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f5cbad3b7fac24792ffda922a9ab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeStamp: 0
   refillSpeed: 0
-  mySound: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
 --- !u!23 &53409879
 Renderer:
   m_ObjectHideFlags: 0
@@ -1589,6 +1590,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9e4e5d5fe8dfc554c980739648424ae2, type: 2}
+    - target: {fileID: 11460186, guid: 8df18a6e128e91c479c72a2b4f648b8a, type: 2}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
     m_RemovedComponents:
     - {fileID: 6560186, guid: 8df18a6e128e91c479c72a2b4f648b8a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8df18a6e128e91c479c72a2b4f648b8a, type: 2}
@@ -2734,6 +2739,10 @@ Prefab:
       propertyPath: mySound
       value: 
       objectReference: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
+    - target: {fileID: 11460186, guid: 8df18a6e128e91c479c72a2b4f648b8a, type: 2}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
     m_RemovedComponents:
     - {fileID: 6560186, guid: 8df18a6e128e91c479c72a2b4f648b8a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8df18a6e128e91c479c72a2b4f648b8a, type: 2}
@@ -2772,8 +2781,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f5cbad3b7fac24792ffda922a9ab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeStamp: 0
   refillSpeed: 0
-  mySound: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
+  audioClip: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
 --- !u!23 &850421509
 Renderer:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class playerMovement : MonoBehaviour {
 	public string player_name;
 
 	//references
-	public Slider slider;
 	public Sponge sponge;
 
 	public SpriteRenderer spriteRenderer;
@@ -112,7 +111,6 @@ public class playerMovement : MonoBehaviour {
 
 		//add vel
 		rigidbody2D.velocity = -transform.right * vert * speed;
-		slider.value = health;
 
 		if(Input.GetButton (player_name + "_dash")){
 			decayCost = Settings.drainSpeedPerDashTrail;
@@ -144,7 +142,7 @@ public class playerMovement : MonoBehaviour {
 				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
 				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
 				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
-				fillAmount -= decayCost * 3;
+				fillAmount -= decayCost;
 
 			}else{
 				instantTrail(t);
@@ -156,6 +154,10 @@ public class playerMovement : MonoBehaviour {
 
 
 		calcFill();
+
+		if(fillAmount < 0){
+			GameHandler.GameOver();
+		}
 
 	}
 
