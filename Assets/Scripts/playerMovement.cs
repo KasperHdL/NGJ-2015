@@ -321,7 +321,7 @@ public class playerMovement : MonoBehaviour {
 
 			tailLength = index+1;
 
-			cam.startShake(.5f,0.1f);
+			cam.startShake(.5f,.5f);
 
 			seeker.SetActive(true);
 			seeker.transform.position = j.transform.position;
