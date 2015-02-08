@@ -11,6 +11,8 @@ public class Seeker : MonoBehaviour {
 			if(!j.hooked && j.owner == player.gameObject){
 				player.hook(j);
 			}
+		}else if(coll.gameObject.tag == "Follower"){
+			player.tailHook();
 		}
 	}
 }

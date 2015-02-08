@@ -20,7 +20,7 @@ public static class Settings{
 		public static float playerOnFriendlyTrailSpeedLength = 1f;
 
 		public static float drainSpeedPerTrail = .1f;
-		public static float drainSpeedPerDashTrail = 1.3f;
+		public static float drainSpeedPerDashTrail = .7f;
 
 		public static Color[] colorFull = {new Color(1f,0f,0f,1f),new Color(0f,0f,1f,1f)};
 		public static Color[] colorEmpty = {new Color(.2f,0f,0f,1f),new Color(0f,0f,0.2f,1f)};
