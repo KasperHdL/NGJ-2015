@@ -48,6 +48,8 @@ public class playerMovement : MonoBehaviour {
 	public GameObject[] joints = new GameObject[7];
 	public int tailLength = 7;
 
+	public GameHandler gh;
+
 
 	//how long between each trail
 	private float decayCost;
@@ -160,7 +162,7 @@ public class playerMovement : MonoBehaviour {
 		calcFill();
 
 		if(fillAmount < 0){
-			GameHandler.GameOver(player_name);
+			gh.GameOver(player_name);
 		}
 
 	}

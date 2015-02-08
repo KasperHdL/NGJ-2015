@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameHandler : MonoBehaviour{
 
 	///Handles game states (menu, playing, gameover)
 
+	public Text Loser;
 	public GameObject startScreen;
-	public static GameObject restartScreen;
+	public GameObject restartScreen;
 	public static CameraShake cam;
 
 	public static bool stopGame = false;
@@ -17,7 +19,6 @@ public class GameHandler : MonoBehaviour{
 		startScreen.SetActive(true);
 		Time.timeScale = 0;
 
-		restartScreen = GameObject.Find("RestartScreen");
 
 		cam = Camera.main.GetComponent<CameraShake>();
 	}
@@ -37,8 +38,12 @@ public class GameHandler : MonoBehaviour{
 		Time.timeScale = 1;
 	}
 
-	public static void GameOver(string name){
-//				restartScreen.SetActive(true);
+	public void GameOver(string name){
+				restartScreen.SetActive(true);
+				if(name == "P1")name = "Red";
+				else name = "Blue";
+
+				Loser.text = name + " lost!";
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.One, 0, 0);
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.Two, 0, 0);
 				Time.timeScale = 0;
