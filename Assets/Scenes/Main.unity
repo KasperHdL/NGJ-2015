@@ -549,7 +549,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
       propertyPath: m_Center.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 414db3bd496143343884202fa006c409, type: 2}
@@ -2295,7 +2295,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Size: {x: 1, y: 3}
-  m_Center: {x: 0, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!114 &357294815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3987,7 +3987,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
       propertyPath: m_Center.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 414db3bd496143343884202fa006c409, type: 2}
@@ -6591,7 +6591,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Size: {x: 1, y: 3}
-  m_Center: {x: 0, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!1 &1073566584
 GameObject:
   m_ObjectHideFlags: 0
@@ -8179,7 +8179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
       propertyPath: m_Center.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
       propertyPath: m_Size.y
@@ -9323,7 +9323,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Size: {x: 1, y: 3}
-  m_Center: {x: 0, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!114 &1847339142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9632,7 +9632,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Size: {x: 1, y: 3}
-  m_Center: {x: 0, y: 1}
+  m_Center: {x: 0, y: 0}
 --- !u!114 &1971136899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9779,7 +9779,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
       propertyPath: m_Center.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 414db3bd496143343884202fa006c409, type: 2}

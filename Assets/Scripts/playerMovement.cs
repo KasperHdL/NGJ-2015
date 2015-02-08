@@ -107,10 +107,12 @@ public class playerMovement : MonoBehaviour {
 		if(Mathf.Abs(rigidbody2D.angularVelocity) > maxRotSpeed)
 			rigidbody2D.angularVelocity = Mathf.Sign(rigidbody2D.rotation) * maxRotSpeed;
 		else
-			rigidbody2D.AddTorque(-hori * rotationSpeed);
+			rigidbody2D.AddTorque(-hori * rotationSpeed * (8-tailLength)/1.4f);
 
 		//add vel
-		rigidbody2D.velocity = transform.right * vert * speed/tailLength;
+		rigidbody2D.velocity = transform.right * vert * speed;
+
+		rigidbody2D.mass = Settings.playerMass * (8-tailLength);
 
 		if(Input.GetButton (player_name + "_dash")){
 			decayCost = Settings.drainSpeedPerDashTrail;
