@@ -6,9 +6,9 @@ public class CameraShake : MonoBehaviour {
 	 float timeStamp;
 	Vector3 originalPos;
 
-	float shakeAmt;
+	public float shakeAmt;
 	 float shakeDuration;
-	 bool shake = false;
+	 public bool shake = false;
 	// Use this for initialization
 	void Start () {
 		originalPos = transform.position;

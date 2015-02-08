@@ -20,12 +20,7 @@ public class GameHandler : MonoBehaviour{
 	}
 
 	void Update(){
-		if(stopGame){
 
-			if(stopGameTime < Time.time){
-				Time.timeScale = 0;
-			}
-		}
 
 	}
 
@@ -36,9 +31,7 @@ public class GameHandler : MonoBehaviour{
 	}
 
 	public static void GameOver(){
-		stopGameTime = Time.time + .3f;
-		stopGame = true;
-		cam.startShake(1f,.2f);
+				Time.timeScale = 0;
 	}
 
 	public static void Restart(){

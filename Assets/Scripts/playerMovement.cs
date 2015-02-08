@@ -110,7 +110,7 @@ public class playerMovement : MonoBehaviour {
 			rigidbody2D.AddTorque(-hori * rotationSpeed);
 
 		//add vel
-		rigidbody2D.velocity = transform.right * vert * speed;
+		rigidbody2D.velocity = transform.right * vert * speed/tailLength;
 
 		if(Input.GetButton (player_name + "_dash")){
 			decayCost = Settings.drainSpeedPerDashTrail;
@@ -319,7 +319,7 @@ public class playerMovement : MonoBehaviour {
 
 			tailLength = index+1;
 
-			cam.startShake(0.1f,0.1f);
+			cam.startShake(.5f,0.1f);
 
 			seeker.SetActive(true);
 			seeker.transform.position = j.transform.position;

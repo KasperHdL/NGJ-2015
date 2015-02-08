@@ -19,6 +19,7 @@ public class WallPush : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other){
 		Rigidbody2D rb = other.rigidbody2D;
+		Vector3 delta = other.transform.position - transform.position;
 		rb.AddForce(pushDir * pushForce * rb.mass);
 	}
 }

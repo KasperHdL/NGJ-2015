@@ -543,6 +543,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Center.y
+      value: -3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 414db3bd496143343884202fa006c409, type: 2}
   m_RootGameObject: {fileID: 1072323804}
@@ -2286,8 +2294,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 2}
-  m_Center: {x: 0, y: -1.5}
+  m_Size: {x: 1, y: 6}
+  m_Center: {x: 0, y: -3.5}
 --- !u!114 &357294815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3972,6 +3980,14 @@ Prefab:
     - target: {fileID: 11400000, guid: 414db3bd496143343884202fa006c409, type: 2}
       propertyPath: pushDir.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Center.y
+      value: -3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 414db3bd496143343884202fa006c409, type: 2}
@@ -6574,8 +6590,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 2}
-  m_Center: {x: 0, y: -1.5}
+  m_Size: {x: 1, y: 6}
+  m_Center: {x: 0, y: -3.5}
 --- !u!1 &1073566584
 GameObject:
   m_ObjectHideFlags: 0
@@ -8161,6 +8177,14 @@ Prefab:
       propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Center.y
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 414db3bd496143343884202fa006c409, type: 2}
   m_RootGameObject: {fileID: 1971136893}
@@ -8262,6 +8286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd5450a3b9e625448197aa8e82bbe12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeAmt: 0
+  shake: 0
 --- !u!1 &1610618573
 GameObject:
   m_ObjectHideFlags: 0
@@ -9296,8 +9322,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 2}
-  m_Center: {x: 0, y: -1.5}
+  m_Size: {x: 1, y: 6}
+  m_Center: {x: 0, y: -3.5}
 --- !u!114 &1847339142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9605,8 +9631,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1, y: 2}
-  m_Center: {x: 0, y: -1.5}
+  m_Size: {x: 1, y: 6}
+  m_Center: {x: 0, y: -3.5}
 --- !u!114 &1971136899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9746,6 +9772,14 @@ Prefab:
     - target: {fileID: 11400000, guid: 414db3bd496143343884202fa006c409, type: 2}
       propertyPath: pushDir.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Size.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100002, guid: 414db3bd496143343884202fa006c409, type: 2}
+      propertyPath: m_Center.y
+      value: -3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 414db3bd496143343884202fa006c409, type: 2}
