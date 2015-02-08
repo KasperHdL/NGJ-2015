@@ -11,7 +11,7 @@ public static class Settings{
 		public static float playerRotSpeed = 30f;
 		public static float playerMaxRotSpeed = 350f;
 
-		public static float playerDashSpeed = 150f;
+		public static float playerDashSpeed = 20f;
 
 		public static float playerOnEnemyTrailSpeed = 7f;
 		public static float playerOnEnemyTrailSpeedLength = .5f;
