@@ -141,6 +141,7 @@ public class playerMovement : MonoBehaviour {
 			Transform t = null;
 			int i = 1;
 			while(t == null){
+				Debug.Log(i);
 				t = joints[tailLength-i++].transform;
 				if(tailLength < i)break;
 			}
