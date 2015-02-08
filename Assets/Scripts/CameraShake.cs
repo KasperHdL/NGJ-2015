@@ -25,8 +25,10 @@ public class CameraShake : MonoBehaviour {
 											 originalPos.y + Random.Range(-shakeAmt, shakeAmt),
 											 originalPos.z);
 				XInputDotNetPure.GamePad.SetVibration (0, 300, 300);
+				XInputDotNetPure.GamePad.SetVibration (1, 300, 300);
 			}else{
 				XInputDotNetPure.GamePad.SetVibration (0, 0, 0);
+				XInputDotNetPure.GamePad.SetVibration (1, 0, 0);
 				shake = false;
 				transform.position = originalPos;
 			}
