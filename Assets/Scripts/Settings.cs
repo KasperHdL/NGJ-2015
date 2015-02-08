@@ -36,6 +36,8 @@ public static class Settings{
 
 		public static float refillSpeed = 5f;
 
-	//------|    |------\\
+	//------|  Camera  |------\\
+		public static float shakeAmt = 0.5f;
+		public static float shakeDuration = 2f;
 
 }
