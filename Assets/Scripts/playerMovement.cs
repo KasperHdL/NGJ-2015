@@ -12,10 +12,12 @@ public class playerMovement : MonoBehaviour {
 	public Sponge sponge;
 
 
+
+
 	public float health;
 
 	public float rotationSpeed;
-	public float maxRotSpeed = 5f;
+	public float maxRotSpeed;
 	public float speed;
 
 	//slow vars
@@ -28,8 +30,30 @@ public class playerMovement : MonoBehaviour {
 	private float speedupEnd;
 	private float speedupLength;
 
+	//joints and Tail
+	public GameObject[] joints = new GameObject[7];
+	public int tailLength = 7;
+
+	//HACK -
+
+	public GameObject[] allBodyParts = new GameObject[6];
+
+	//Seeker -- looks for unattached parts
+	public GameObject seeker;
+
+	//dummy to fix unjointing
+	public GameObject dummy_prefab;
+
 	// Use this for initialization
 	void Start () {
+
+		for(int i = 0;i<joints.Length-1;i++){
+			allBodyParts[i] = joints[i];
+			JointPiece j = joints[i].GetComponent<JointPiece>();
+			j.index = i;
+			j.owner = gameObject;
+		}
+
 		health = Settings.playerHealth;
 
 		slowLength = Settings.playerOnEnemyTrailSpeedLength;
@@ -37,6 +61,10 @@ public class playerMovement : MonoBehaviour {
 
 		speed = Settings.playerSpeed;
 		rotationSpeed = Settings.playerRotSpeed;
+		maxRotSpeed = Settings.playerMaxRotSpeed;
+
+
+
 	}
 
 	// Update is called once per frame
@@ -72,15 +100,100 @@ public class playerMovement : MonoBehaviour {
 		}
 
 	}
-	void OnTriggerEnter(Collider other){
-			if (other.gameObject.tag == "Wall") {
-				transform.Rotate (0, 180, 0);
-				OnJointBreak();
+
+	public void hook(JointPiece j){
+		joints[tailLength] = j.gameObject;
+		j.index = tailLength;
+		j.hooked = true;
+		j.owner = gameObject;
+		joints[tailLength-1].GetComponent<HingeJoint2D>().connectedBody = j.rigidbody2D;
+
+		HingeJoint2D curJoint = j.GetComponent<HingeJoint2D>();
+		GameObject g;
+
+		//repopulate array with any parts hanging to it
+		int i = tailLength +1;
+		for(;i<7;i++){
+			g = curJoint.connectedBody.gameObject;
+			if(g.tag == "Follower"){
+				joints[i] = g;
+				break;
 			}
+
+			curJoint = g.GetComponent<HingeJoint2D>();
+
+			if(curJoint == null)
+				break;
+
+			joints[i] = curJoint.gameObject;
+		}
+		tailLength = i + 1;
+
+		bool foundFollower = false;
+		i = 0;
+		for(;i<7;i++){
+
+			if(joints[i] == null){
+				Debug.Log(player_name + " : " + i);
+				HingeJoint2D hinge = joints[i-1].GetComponent<HingeJoint2D>();
+
+				seeker.transform.position = hinge.transform.position;
+				hinge.connectedBody = seeker.rigidbody2D;
+				break;
+			}else if(joints[i].gameObject.tag == "Follower"){
+				foundFollower = true;
+				break;
+			}
+		}
+		if(foundFollower)
+			seeker.SetActive(false);
+
+
 	}
 
-	void OnJointBreak() {
+	public void breakChain(int index){
+		if(index != tailLength-1){
+			Debug.Log("break " + index);
+			HingeJoint2D j = joints[index].GetComponent<HingeJoint2D>();
 
+
+			if(joints[index+1] != null && joints[index+1].tag != "Follower"){
+				JointPiece piece = joints[index+1].GetComponent<JointPiece>();
+				piece.startCooldown();
+
+
+
+			}
+			for(int i = index+1;i<tailLength;i++){
+
+				JointPiece piece = joints[i].GetComponent<JointPiece>();
+				if(piece != null){
+					piece.index = -1;
+				}
+				joints[i] = null;
+			}
+
+			tailLength = index+1;
+
+			seeker.SetActive(true);
+			seeker.transform.position = j.transform.position;
+			j.connectedBody = seeker.rigidbody2D;
+
+			checkSeeker(j);
+
+		}
+
+
+	}
+
+	private void checkSeeker(HingeJoint2D j){
+		for(int i = 0;i<allBodyParts.Length;i++){
+			HingeJoint2D h = allBodyParts[i].GetComponent<HingeJoint2D>();
+			if(h.connectedBody == seeker && h != j){
+				GameObject g = Instantiate(dummy_prefab,seeker.transform.position,Quaternion.identity) as GameObject;
+				h.connectedBody = g.rigidbody2D;
+			}
+		}
 	}
 
 	public void startSlow(){
@@ -96,12 +209,12 @@ public class playerMovement : MonoBehaviour {
 
 		speed = Settings.playerOnFriendlyTrailSpeed;
 	}
-	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == "Joint") {
-			
-			other.gameObject.GetComponent<HingeJoint2D>().connectedBody = null;
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Joint" ) {
+			JointPiece j = other.gameObject.GetComponent<JointPiece>();
+			if(j.hooked && j.owner != gameObject && j.index != -1)
+				j.owner.GetComponent<playerMovement>().breakChain(j.index);
 
-			Debug.Log ("Detection");
 		}
 	}
 

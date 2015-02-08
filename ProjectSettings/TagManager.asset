@@ -3,9 +3,10 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - Joint
+  - 
   - Wall
   - Follower
+  - Joint
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -43,4 +44,20 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Trails
+    userID: 1
+    uniqueID: 3309551471
+    locked: 0
+  - name: Tails
+    userID: 2
+    uniqueID: 366609173
+    locked: 0
+  - name: Body
+    userID: 3
+    uniqueID: 785988013
+    locked: 0
+  - name: Head
+    userID: 4
+    uniqueID: 3479393897
     locked: 0

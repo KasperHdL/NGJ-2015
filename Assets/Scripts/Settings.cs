@@ -7,8 +7,11 @@ public static class Settings{
 		public static float playerHealth = 10f;
 
 		public static float playerSpeed = 10f;
+
+		public static float playerRotSpeed = 10f;
+		public static float playerMaxRotSpeed = 350f;
+
 		public static float playerDashSpeed = 15f;
-		public static float playerRotSpeed = 100f;
 
 		public static float playerOnEnemyTrailSpeed = 5f;
 		public static float playerOnEnemyTrailSpeedLength = 1f;
@@ -30,7 +33,7 @@ public static class Settings{
 		public static float decayLength = 2f;
 		public static float decayDistance = .7f;
 
-
+		public static float jointCooldownLength = 1f;
 
 	//------|  Refiller  |------\\
 
