@@ -138,13 +138,9 @@ public class playerMovement : MonoBehaviour {
 		//check distance to last placed trail if greater then a set value then instantiate a new
 		float dist = Vector3.Distance(lastPlacedTrailPos,transform.position);
 		if(dist > distBetweenTrails && fillAmount > 0){
-			Transform t = null;
-			int i = 1;
-			while(t == null){
-				Debug.Log(player_name + " : " + i + " , length " + tailLength + " = " + tailLength-i);
-				t = joints[tailLength-i].transform;
-				if(tailLength < i++)break;
-			}
+
+			Transform t = joints[0].transform;
+
 
 			if(dash){
 				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
@@ -164,7 +160,7 @@ public class playerMovement : MonoBehaviour {
 		calcFill();
 
 		if(fillAmount < 0){
-			GameHandler.GameOver();
+			GameHandler.GameOver(player_name);
 		}
 
 	}
@@ -173,12 +169,15 @@ public class playerMovement : MonoBehaviour {
 		float curFill = 0;
 		float nextFill = 0;
 
-		JointPiece curJoint;
+		JointPiece curJoint = null;
 		JointPiece nextJoint = null;
 
 		for(int i = tailLength-1;i>=0;i--){
 				//special cases
-			curJoint = joints[i].GetComponent<JointPiece>();
+			if(joints[i].tag != "Follower")
+				curJoint = joints[i].GetComponent<JointPiece>();
+
+
 			if(i == 0){
 				nextFill = fillAmount;
 			}else{
@@ -224,18 +223,15 @@ public class playerMovement : MonoBehaviour {
 						curJoint.fillAmount = 0;
 
 				}
-			}else{
-				if(i == 0)
-					fillAmount -= .05f;
-				else
-					nextJoint.fillAmount -= .05f;
-
 			}
 
 			if(joints[i].tag == "Follower"){
 				sponge.updateColor();
 			}else{
-				curJoint.updateColor();
+				if(curJoint == null)
+					Debug.Log(i + " wth");
+				else
+					curJoint.updateColor();
 			}
 
 
