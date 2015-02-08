@@ -136,7 +136,12 @@ public class playerMovement : MonoBehaviour {
 		//check distance to last placed trail if greater then a set value then instantiate a new
 		float dist = Vector3.Distance(lastPlacedTrailPos,transform.position);
 		if(dist > distBetweenTrails && fillAmount > 0){
-			Transform t = joints[tailLength-1].transform;
+			Transform t = null;
+			int i = 1;
+			while(t == null){
+				t = joints[tailLength-i++].transform;
+				if(tailLength-i++ == -1)break;
+			}
 
 			if(dash){
 				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
@@ -295,18 +300,19 @@ public class playerMovement : MonoBehaviour {
 			HingeJoint2D j = joints[index].GetComponent<HingeJoint2D>();
 
 
+			fillAmount -= 15f;
+
 			if(joints[index+1] != null && joints[index+1].tag != "Follower"){
 				JointPiece piece = joints[index+1].GetComponent<JointPiece>();
 				piece.startCooldown();
-
-
-
 			}
+
 			for(int i = index+1;i<tailLength;i++){
 
 				JointPiece piece = joints[i].GetComponent<JointPiece>();
 				if(piece != null){
 					piece.index = -1;
+					piece.playSound();
 				}
 				joints[i] = null;
 			}

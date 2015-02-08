@@ -8,6 +8,7 @@ public class GameHandler : MonoBehaviour{
 	public GameObject startScreen;
 
 	void Awake(){
+		startScreen.SetActive(true);
 		Time.timeScale = 0;
 	}
 

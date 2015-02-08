@@ -49,4 +49,10 @@ public class JointPiece : MonoBehaviour {
 		spriteRenderer.color = color;
 	}
 
+	public void playSound()          //function for playing a sound from the sound array
+	{
+
+		audio.Play ();
+
+	}
 }
