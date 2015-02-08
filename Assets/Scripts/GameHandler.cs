@@ -38,7 +38,7 @@ public class GameHandler : MonoBehaviour{
 	}
 
 	public static void GameOver(string name){
-				restartScreen.SetActive(true);
+//				restartScreen.SetActive(true);
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.One, 0, 0);
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.Two, 0, 0);
 				Time.timeScale = 0;
