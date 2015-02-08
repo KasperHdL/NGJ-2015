@@ -141,8 +141,9 @@ public class playerMovement : MonoBehaviour {
 			Transform t = null;
 			int i = 1;
 			while(t == null){
-				t = joints[tailLength-i++].transform;
-				if(tailLength < i)break;
+				Debug.Log(player_name + " : " + i + " , length " + tailLength + " = " + tailLength-i);
+				t = joints[tailLength-i].transform;
+				if(tailLength < i++)break;
 			}
 
 			if(dash){
@@ -257,11 +258,10 @@ public class playerMovement : MonoBehaviour {
 		j.index = tailLength;
 		j.hooked = true;
 		j.owner = gameObject;
-
-		joints[tailLength-1].GetComponent<HingeJoint2D>().connectedBody = j.rigidbody2D;
+		GameObject g = joints[tailLength-1];
+		if(g != null)joints[tailLength-1].GetComponent<HingeJoint2D>().connectedBody = j.rigidbody2D;
 
 		HingeJoint2D curJoint = j.GetComponent<HingeJoint2D>();
-		GameObject g;
 
 		//repopulate array with any parts hanging to it
 		int i = tailLength+1;
