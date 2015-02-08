@@ -4029,6 +4029,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 46d9a5cd825a15f488fd05f4e79b2868, type: 3}
   m_Color: {r: 0, g: .420689344, b: 1, a: 1}
+<<<<<<< HEAD
 --- !u!1 &521670322
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,6 +5093,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1100833483}
   m_RootOrder: 5
+=======
+>>>>>>> 39c4f703c7b664fb4a877f90a8329c12df55458b
 --- !u!1 &542336469
 GameObject:
   m_ObjectHideFlags: 0
@@ -9941,7 +9944,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 36265630c4cd8d5489b335a362408248, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
