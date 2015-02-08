@@ -4,14 +4,19 @@ using System.Collections;
 public class RefillArea : MonoBehaviour {
 	int countSpeed = 5;
 	int countNum = 0;
+	public float timeStamp;
 
 	public float refillSpeed;
 	public AudioClip [] audioClip; //get sounds
 
 	void Start(){
 		refillSpeed = Settings.refillSpeed;
+		timeStamp = 0;
 	}
 
+	void Update(){
+		stopSound (0);
+		}
 	void OnTriggerStay2D(Collider2D other){
 		if (other.gameObject.tag == "Follower") {
 			if (countNum > countSpeed) {
@@ -19,19 +24,27 @@ public class RefillArea : MonoBehaviour {
 
 				if(sponge.amountFilled < Settings.spongeCapacity){
 					sponge.amountFilled += refillSpeed;
-					Debug.Log ("Detection");
-					playSound(0);
+					Debug.Log (sponge.amountFilled + " " + Settings.spongeCapacity);
+					playSound (0);
 				}
 				countNum = 0;
 			}
 			countNum++;
-			//audio.Stop();
 		}
 	}
 
 	void playSound(int clip)          //function for playing a sound from the sound array
 	{
+		if (Time.time > timeStamp) {
+			audio.clip = audioClip [clip];
+			audio.Play ();
+			audio.loop = true;
+			timeStamp = Time.time + audio.clip.length;
+		}
+	}
+	void stopSound(int clip)          //function for playing a sound from the sound array
+	{
 		audio.clip = audioClip[clip];
-		audio.Play ();
+		audio.loop = false;
 	}
 }
