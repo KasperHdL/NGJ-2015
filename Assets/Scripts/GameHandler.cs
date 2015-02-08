@@ -7,7 +7,7 @@ public class GameHandler : MonoBehaviour{
 	///Handles game states (menu, playing, gameover)
 
 	public Text Loser;
-	public GameObject startScreen;
+	public GameObject titlescreen;
 	public GameObject restartScreen;
 	public static CameraShake cam;
 
@@ -15,8 +15,10 @@ public class GameHandler : MonoBehaviour{
 	public static float stopGameTime;
 
 
+	public bool inited = false;
+
+
 	void Awake(){
-		startScreen.SetActive(true);
 		Time.timeScale = 0;
 
 
@@ -24,12 +26,15 @@ public class GameHandler : MonoBehaviour{
 	}
 
 	void Update(){
-
+		if(!inited && Time.unscaledTime > 2f){
+			titlescreen.SetActive(false);
+			Time.timeScale = 1f;
+			inited = true;
+		}
 
 	}
 
 	public void onStartGameClick(){
-		startScreen.SetActive(false);
 
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.One, 0, 0);
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.Two, 0, 0);
@@ -49,7 +54,7 @@ public class GameHandler : MonoBehaviour{
 				Time.timeScale = 0;
 	}
 
-	public static void Restart(){
-
+	public void Restart(){
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }

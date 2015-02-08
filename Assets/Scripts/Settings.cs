@@ -23,7 +23,7 @@ public static class Settings{
 		public static float drainSpeedPerDashTrail = .7f;
 
 		public static Color[] colorFull = {new Color(1f,0f,0f,1f),new Color(0f,0f,1f,1f)};
-		public static Color[] colorEmpty = {new Color(.2f,0f,0f,1f),new Color(0f,0f,0.2f,1f)};
+		public static Color[] colorEmpty = {new Color(.4f,0f,0f,1f),new Color(0f,0f,0.4f,1f)};
 
 		public static float playerMass = 20f;
 

@@ -312,7 +312,10 @@ public class playerMovement : MonoBehaviour {
 			HingeJoint2D j = joints[index].GetComponent<HingeJoint2D>();
 
 
-			fillAmount -= 15f;
+			joints[index].GetComponent<JointPiece>().fillAmount -= 15f;
+
+			for(int i = 0;i<50;i++)
+				instantTrail(joints[index].transform,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
 
 			if(joints[index+1] != null && joints[index+1].tag != "Follower"){
 				JointPiece piece = joints[index+1].GetComponent<JointPiece>();
@@ -321,10 +324,12 @@ public class playerMovement : MonoBehaviour {
 
 			for(int i = index+1;i<tailLength;i++){
 
-				JointPiece piece = joints[i].GetComponent<JointPiece>();
-				if(piece != null){
-					piece.index = -1;
-					piece.playSound();
+				if(joints[i] != null){
+					JointPiece piece = joints[i].GetComponent<JointPiece>();
+					if(piece != null){
+						piece.index = -1;
+						piece.playSound();
+					}
 				}
 				joints[i] = null;
 			}
@@ -338,6 +343,8 @@ public class playerMovement : MonoBehaviour {
 			j.connectedBody = seeker.rigidbody2D;
 
 			checkSeeker(j);
+
+			
 
 		}
 
