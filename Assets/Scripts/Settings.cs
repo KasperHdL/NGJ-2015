@@ -19,19 +19,23 @@ public static class Settings{
 		public static float playerOnFriendlyTrailSpeed = 15f;
 		public static float playerOnFriendlyTrailSpeedLength = 1f;
 
-		public static float drainSpeedPerTrail = 1f;
+		public static float drainSpeedPerTrail = .3f;
 		public static float drainSpeedPerDashTrail = 1.5f;
+
+		public static Color[] colorFull = {new Color(1f,0f,0f,1f),new Color(0f,0f,1f,1f)};
+		public static Color[] colorEmpty = {new Color(.2f,0f,0f,1f),new Color(0f,0f,0.2f,1f)};
+
 
 	//------|  Tail/Sponge/Follower  |------\\
 		public static int followSpeed = 20;
 		public static int chainLength = 2;
 
-		public static float spongeCapacity = 100;
+		public static float partFillCapacity = 30f;
 
 
 	//------|  Trail  |------\\
 		public static float decayLength = 2f;
-		public static float decayDistance = .7f;
+		public static float decayDistance = 1f;
 
 		public static float jointCooldownLength = 1f;
 

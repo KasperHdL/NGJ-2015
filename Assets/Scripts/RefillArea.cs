@@ -18,8 +18,10 @@ public class RefillArea : MonoBehaviour {
 				Sponge sponge = other.gameObject.GetComponent<Sponge>();
 				audio.Play ();
 
-				if(sponge.amountFilled < Settings.spongeCapacity){
+				if(sponge.amountFilled + refillSpeed < Settings.partFillCapacity){
 					sponge.amountFilled += refillSpeed;
+				}else{
+					sponge.amountFilled = Settings.partFillCapacity;
 				}
 				countNum = 0;
 			}
