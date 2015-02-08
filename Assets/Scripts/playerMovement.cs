@@ -11,6 +11,18 @@ public class playerMovement : MonoBehaviour {
 	public Slider slider;
 	public Sponge sponge;
 
+	public SpriteRenderer spriteRenderer;
+	public int changeChannel;
+
+	//fill stuff
+	public float fillAmount;
+	public float totalFillAmount;
+
+
+	public GameObject trail_prefab;
+	public Transform trail_container;
+
+	private float trailDecayLength;
 
 
 
@@ -30,9 +42,19 @@ public class playerMovement : MonoBehaviour {
 	private float speedupEnd;
 	private float speedupLength;
 
+	//dash vars
+	private bool dash = false;
+
 	//joints and Tail
 	public GameObject[] joints = new GameObject[7];
 	public int tailLength = 7;
+
+
+	//how long between each trail
+	private float decayCost;
+
+	private float distBetweenTrails;
+	private Vector3 lastPlacedTrailPos;
 
 	//HACK -
 
@@ -46,6 +68,9 @@ public class playerMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		//headfill
+		fillAmount = 10;
 
 		for(int i = 0;i<joints.Length-1;i++){
 			allBodyParts[i] = joints[i];
@@ -62,6 +87,12 @@ public class playerMovement : MonoBehaviour {
 		speed = Settings.playerSpeed;
 		rotationSpeed = Settings.playerRotSpeed;
 		maxRotSpeed = Settings.playerMaxRotSpeed;
+
+		distBetweenTrails = Settings.decayDistance;
+		lastPlacedTrailPos = transform.position;
+
+		decayCost = Settings.drainSpeedPerTrail;
+		trailDecayLength = Settings.decayLength;
 
 
 
@@ -83,7 +114,17 @@ public class playerMovement : MonoBehaviour {
 		rigidbody2D.velocity = -transform.right * vert * speed;
 		slider.value = health;
 
-		if(speedup && speedupEnd < Time.time){
+		if(Input.GetButton (player_name + "_dash")){
+			decayCost = Settings.drainSpeedPerDashTrail;
+			dash = true;
+			speed = Settings.playerDashSpeed;
+		} else {
+			dash = false;
+			speed = Settings.playerSpeed;
+			decayCost = Settings.drainSpeedPerTrail;
+		}
+
+		if(!dash && speedup && speedupEnd < Time.time){
 			speedup = false;
 			speed = Settings.playerSpeed;
 		}
@@ -93,13 +134,108 @@ public class playerMovement : MonoBehaviour {
 			speed = Settings.playerSpeed;
 		}
 
-		if(Input.GetButton (player_name + "_dash")){
-			Dash();
-		} else {
-			speed = Settings.playerSpeed;
+
+		//check distance to last placed trail if greater then a set value then instantiate a new
+		float dist = Vector3.Distance(lastPlacedTrailPos,transform.position);
+		if(dist > distBetweenTrails && fillAmount > 0){
+			Transform t = joints[tailLength-1].transform;
+
+			if(dash){
+				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
+				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
+				instantTrail(t,new Vector3(Random.Range(-2f,2f),Random.Range(-2f,2f),0));
+				fillAmount -= decayCost * 3;
+
+			}else{
+				instantTrail(t);
+				fillAmount -= decayCost;
+			}
+			lastPlacedTrailPos = sponge.transform.position;
 		}
 
+
+
+		calcFill();
+
 	}
+
+	public void calcFill(){
+		float curFill = 0;
+		float nextFill = 0;
+
+		JointPiece curJoint;
+		JointPiece nextJoint = null;
+
+		for(int i = tailLength-1;i>=0;i--){
+				//special cases
+			curJoint = joints[i].GetComponent<JointPiece>();
+			if(i == 0){
+				nextFill = fillAmount;
+			}else{
+				nextJoint = joints[i-1].GetComponent<JointPiece>();
+				nextFill = nextJoint.fillAmount;
+			}
+
+			if(nextFill < Settings.partFillCapacity){
+				//push to next
+
+				//set current
+				if(joints[i].tag == "Follower")
+					curFill = sponge.amountFilled;
+				else
+					curFill = curJoint.fillAmount;
+
+				if(curFill + nextFill > Settings.partFillCapacity){
+					//if it will result in an overflow
+					float overflow =  (nextFill + curFill) % Settings.partFillCapacity;
+
+					//set the next
+					if(i == 0)
+						fillAmount = Settings.partFillCapacity;
+					else
+						nextJoint.fillAmount = Settings.partFillCapacity;
+
+
+					if(joints[i].tag == "Follower")
+						sponge.amountFilled = overflow;
+					else
+						curJoint.fillAmount = overflow;
+				}else{
+					//set the next
+					if(i == 0)
+						fillAmount = curFill + nextFill;
+					else
+						nextJoint.fillAmount = curFill + nextFill;
+
+
+					if(joints[i].tag == "Follower")
+						sponge.amountFilled = 0;
+					else
+						curJoint.fillAmount = 0;
+
+				}
+			}
+
+			if(joints[i].tag == "Follower"){
+				sponge.updateColor();
+			}else{
+				curJoint.updateColor();
+			}
+
+
+		}
+		//update head
+		updateColor();
+	}
+
+
+	public void updateColor(){
+
+		Color color = spriteRenderer.color;
+		color = Color.Lerp(Settings.colorEmpty[changeChannel],Settings.colorFull[changeChannel],fillAmount/Settings.partFillCapacity);
+		spriteRenderer.color = color;
+	}
+
 
 	public void hook(JointPiece j){
 		joints[tailLength] = j.gameObject;
@@ -218,9 +354,28 @@ public class playerMovement : MonoBehaviour {
 		}
 	}
 
-	void Dash(){
-		sponge.dash = true;
-		speed = Settings.playerDashSpeed;
+	//instants a trail on the currentposition
+	public void instantTrail(Transform trans,Vector3 offset){
+		Vector3 pos = trans.position + offset;
+		GameObject g = Instantiate(trail_prefab,pos,Quaternion.identity) as GameObject;
+		g.transform.parent = trail_container;
+		//sets how long the trail will live
+		Trail t = g.GetComponent<Trail>();
+		t.setOwner(gameObject);
+		t.setDecayLength(trailDecayLength);
+
+	}
+
+	//instants a trail on the currentposition
+	public void instantTrail(Transform trans){
+		Vector3 pos = trans.position ;
+		GameObject g = Instantiate(trail_prefab,pos,Quaternion.identity) as GameObject;
+		g.transform.parent = trail_container;
+		//sets how long the trail will live
+		Trail t = g.GetComponent<Trail>();
+		t.setOwner(gameObject);
+		t.setDecayLength(trailDecayLength);
+
 	}
 
 }

@@ -8,7 +8,15 @@ public class JointPiece : MonoBehaviour {
 
 	public bool hooked = true;
 
+	//part fill
 
+	public float fillAmount;
+	public SpriteRenderer spriteRenderer;
+	public int changeChannel;
+
+
+
+	//joint lock
 	public bool jointOnCooldown = false;
 	private float jointCooldownEnd;
 	private float jointCooldownLength;
@@ -16,6 +24,7 @@ public class JointPiece : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		fillAmount = Settings.partFillCapacity;
 		jointCooldownLength = Settings.jointCooldownLength;
 	}
 
@@ -30,6 +39,14 @@ public class JointPiece : MonoBehaviour {
 		hooked = true;
 		jointOnCooldown = true;
 		jointCooldownEnd = Time.time + jointCooldownLength;
+	}
+
+
+
+	public void updateColor(){
+		Color color = spriteRenderer.color;
+		color = Color.Lerp(Settings.colorEmpty[changeChannel],Settings.colorFull[changeChannel],fillAmount/Settings.partFillCapacity);
+		spriteRenderer.color = color;
 	}
 
 }
