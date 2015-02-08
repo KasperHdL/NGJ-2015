@@ -17,6 +17,8 @@ public class Sponge : MonoBehaviour {
 	private float distBetweenTrails;
 	private Vector3 lastPlacedTrailPos;
 
+	public bool dash;
+
 	// Use this for initialization
 	void Start () {
 		trailDecayLength = Settings.decayLength;
@@ -34,6 +36,12 @@ public class Sponge : MonoBehaviour {
 		if(dist > distBetweenTrails && amountFilled >= 0){
 			instantTrail();
 			amountFilled -= decayCost;
+		}
+
+		if(dash){
+			decayCost = Settings.drainSpeedPerDashTrail;
+		} else {
+			decayCost = Settings.drainSpeedPerTrail;
 		}
 	}
 

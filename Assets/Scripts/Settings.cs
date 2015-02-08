@@ -7,8 +7,13 @@ public static class Settings{
 		public static float playerHealth = 10f;
 
 		public static float playerSpeed = 10f;
+<<<<<<< HEAD
 		public static float playerRotSpeed = 10f;
 		public static float playerMaxRotSpeed = 350f;
+=======
+		public static float playerDashSpeed = 15f;
+		public static float playerRotSpeed = 100f;
+>>>>>>> cc2fc74284f2b99e690c3b6374058c3f3320f485
 
 		public static float playerOnEnemyTrailSpeed = 5f;
 		public static float playerOnEnemyTrailSpeedLength = 1f;
@@ -17,6 +22,7 @@ public static class Settings{
 		public static float playerOnFriendlyTrailSpeedLength = 1f;
 
 		public static float drainSpeedPerTrail = 1f;
+		public static float drainSpeedPerDashTrail = 1.5f;
 
 	//------|  Tail/Sponge/Follower  |------\\
 		public static int followSpeed = 20;

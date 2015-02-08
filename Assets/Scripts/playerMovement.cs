@@ -92,6 +92,13 @@ public class playerMovement : MonoBehaviour {
 			slowed = false;
 			speed = Settings.playerSpeed;
 		}
+
+		if(Input.GetButton (player_name + "_dash")){
+			Dash();
+		} else {
+			speed = Settings.playerSpeed;
+		}
+
 	}
 
 	public void hook(JointPiece j){
@@ -210,4 +217,10 @@ public class playerMovement : MonoBehaviour {
 
 		}
 	}
+
+	void Dash(){
+		sponge.dash = true;
+		speed = Settings.playerDashSpeed;
+	}
+
 }
