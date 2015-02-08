@@ -264,11 +264,11 @@ public class playerMovement : MonoBehaviour {
 		GameObject g;
 
 		//repopulate array with any parts hanging to it
-		int i = tailLength ;
+		int i = tailLength+1;
 		for(;i<7;i++){
 			g = curJoint.connectedBody.gameObject;
 			if(g.tag == "Follower"){
-				joints[++i] = g;
+				joints[i] = g;
 				break;
 			}
 
@@ -277,7 +277,7 @@ public class playerMovement : MonoBehaviour {
 			if(curJoint == null)
 				break;
 
-			joints[++i] = curJoint.gameObject;
+			joints[i] = curJoint.gameObject;
 		}
 		tailLength = i + 1;
 
