@@ -6,6 +6,7 @@ public class GameHandler : MonoBehaviour{
 	///Handles game states (menu, playing, gameover)
 
 	public GameObject startScreen;
+	public static GameObject restartScreen;
 	public static CameraShake cam;
 
 	public static bool stopGame = false;
@@ -15,6 +16,8 @@ public class GameHandler : MonoBehaviour{
 	void Awake(){
 		startScreen.SetActive(true);
 		Time.timeScale = 0;
+
+		restartScreen = GameObject.Find("RestartScreen");
 
 		cam = Camera.main.GetComponent<CameraShake>();
 	}
@@ -34,8 +37,8 @@ public class GameHandler : MonoBehaviour{
 		Time.timeScale = 1;
 	}
 
-	public static void GameOver(){
-
+	public static void GameOver(string name){
+				restartScreen.SetActive(true);
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.One, 0, 0);
 				XInputDotNetPure.GamePad.SetVibration (XInputDotNetPure.PlayerIndex.Two, 0, 0);
 				Time.timeScale = 0;

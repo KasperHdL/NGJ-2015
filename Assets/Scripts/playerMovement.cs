@@ -141,7 +141,7 @@ public class playerMovement : MonoBehaviour {
 			Transform t = null;
 			int i = 1;
 			while(t == null){
-				Debug.Log(player_name + " : " + i + " , length " + tailLength + " = " + tailLength-i);
+
 				t = joints[tailLength-i].transform;
 				if(tailLength < i++)break;
 			}
@@ -164,7 +164,7 @@ public class playerMovement : MonoBehaviour {
 		calcFill();
 
 		if(fillAmount < 0){
-			GameHandler.GameOver();
+			GameHandler.GameOver(player_name);
 		}
 
 	}
