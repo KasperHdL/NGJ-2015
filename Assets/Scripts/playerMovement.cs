@@ -296,17 +296,8 @@ public class playerMovement : MonoBehaviour {
 
 	}
 
-	public void tailHook(){
-		joints[tailLength-1].GetComponent<HingeJoint2D>().connectedBody = sponge.rigidbody2D;
-
-		joints[tailLength] = sponge.gameObject;
-
-			seeker.SetActive(false);
-
-	}
-
 	public void breakChain(int index){
-		if(index != tailLength-1){
+		if(index < tailLength-1){
 			Debug.Log("break " + index);
 			HingeJoint2D j = joints[index].GetComponent<HingeJoint2D>();
 

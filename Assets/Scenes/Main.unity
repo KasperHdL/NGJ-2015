@@ -448,7 +448,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
       propertyPath: m_Mass
-      value: .5
+      value: .25
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
       propertyPath: m_AngularDrag
@@ -2206,6 +2206,10 @@ Prefab:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 1250744246}
+    - target: {fileID: 5000000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
+      propertyPath: m_Mass
+      value: .25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
   m_RootGameObject: {fileID: 803195739}
@@ -2535,6 +2539,10 @@ Prefab:
     - target: {fileID: 11400000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
       propertyPath: changeChannel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
+      propertyPath: m_Mass
+      value: .25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -5533,6 +5541,10 @@ Prefab:
       propertyPath: m_ConnectedRigidBody
       value: 
       objectReference: {fileID: 574165812}
+    - target: {fileID: 5000000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
+      propertyPath: m_Mass
+      value: .5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
   m_RootGameObject: {fileID: 1284722116}
@@ -5689,7 +5701,7 @@ Prefab:
       objectReference: {fileID: 1731380035}
     - target: {fileID: 5000000, guid: f63a2ad2d92bf2e47934d5fd5ee74f86, type: 2}
       propertyPath: m_Mass
-      value: 2
+      value: .5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3300000, guid: f63a2ad2d92bf2e47934d5fd5ee74f86, type: 2}
@@ -7280,7 +7292,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 764539719}
   m_GameObject: {fileID: 1229013239}
-  m_Mass: 2
+  m_Mass: .5
   m_LinearDrag: 2
   m_AngularDrag: .0500000007
   m_GravityScale: 1
@@ -7530,7 +7542,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
       propertyPath: m_Mass
-      value: .5
+      value: .25
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: f6087e4b2423f8041b584cf7b1e9760e, type: 2}
       propertyPath: m_AngularDrag
@@ -7710,7 +7722,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 718931360}
   m_GameObject: {fileID: 1284722116}
-  m_Mass: .25
+  m_Mass: .5
   m_LinearDrag: 1
   m_AngularDrag: .200000003
   m_GravityScale: 1
@@ -9382,7 +9394,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 184253654}
   m_GameObject: {fileID: 1875215467}
-  m_Mass: .5
+  m_Mass: .25
   m_LinearDrag: 1
   m_AngularDrag: .200000003
   m_GravityScale: 1
@@ -9830,7 +9842,7 @@ Rigidbody2D:
     type: 2}
   m_PrefabInternal: {fileID: 1250764168}
   m_GameObject: {fileID: 2032855062}
-  m_Mass: .5
+  m_Mass: .25
   m_LinearDrag: 1
   m_AngularDrag: .200000003
   m_GravityScale: 1
