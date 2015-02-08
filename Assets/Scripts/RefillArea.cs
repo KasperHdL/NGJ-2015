@@ -7,7 +7,7 @@ public class RefillArea : MonoBehaviour {
 	public float timeStamp;
 
 	public float refillSpeed;
-	public AudioClip [] audioClip; //get sounds
+	public AudioClip audioClip; //get sounds
 
 	void Start(){
 		refillSpeed = Settings.refillSpeed;
@@ -15,17 +15,16 @@ public class RefillArea : MonoBehaviour {
 	}
 
 	void Update(){
-		stopSound (0);
+		stopSound ();
 		}
 	void OnTriggerStay2D(Collider2D other){
 		if (other.gameObject.tag == "Follower") {
 			if (countNum > countSpeed) {
 				Sponge sponge = other.gameObject.GetComponent<Sponge>();
 
-				if(sponge.amountFilled < Settings.spongeCapacity){
+				if(sponge.amountFilled + refillSpeed < Settings.partFillCapacity){
 					sponge.amountFilled += refillSpeed;
-					Debug.Log (sponge.amountFilled + " " + Settings.spongeCapacity);
-					playSound (0);
+					playSound ();
 				}
 				countNum = 0;
 			}
@@ -33,18 +32,18 @@ public class RefillArea : MonoBehaviour {
 		}
 	}
 
-	void playSound(int clip)          //function for playing a sound from the sound array
+	void playSound()          //function for playing a sound from the sound array
 	{
 		if (Time.time > timeStamp) {
-			audio.clip = audioClip [clip];
+			audio.clip = audioClip;
 			audio.Play ();
 			audio.loop = true;
 			timeStamp = Time.time + audio.clip.length;
 		}
 	}
-	void stopSound(int clip)          //function for playing a sound from the sound array
+	void stopSound()          //function for playing a sound from the sound array
 	{
-		audio.clip = audioClip[clip];
+		audio.clip = audioClip;
 		audio.loop = false;
 	}
 }
