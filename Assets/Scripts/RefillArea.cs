@@ -6,7 +6,7 @@ public class RefillArea : MonoBehaviour {
 	int countNum = 0;
 
 	public float refillSpeed;
-	public AudioClip mySound; //get sounds
+	public AudioClip [] audioClip; //get sounds
 
 	void Start(){
 		refillSpeed = Settings.refillSpeed;
@@ -16,15 +16,22 @@ public class RefillArea : MonoBehaviour {
 		if (other.gameObject.tag == "Follower") {
 			if (countNum > countSpeed) {
 				Sponge sponge = other.gameObject.GetComponent<Sponge>();
-				audio.Play ();
 
 				if(sponge.amountFilled < Settings.spongeCapacity){
 					sponge.amountFilled += refillSpeed;
+					Debug.Log ("Detection");
+					playSound(0);
 				}
 				countNum = 0;
 			}
 			countNum++;
-			audio.Stop();
+			//audio.Stop();
 		}
+	}
+
+	void playSound(int clip)          //function for playing a sound from the sound array
+	{
+		audio.clip = audioClip[clip];
+		audio.Play ();
 	}
 }
