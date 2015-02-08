@@ -141,7 +141,6 @@ public class playerMovement : MonoBehaviour {
 			Transform t = null;
 			int i = 1;
 			while(t == null){
-				Debug.Log(i);
 				t = joints[tailLength-i++].transform;
 				if(tailLength < i)break;
 			}
@@ -228,7 +227,7 @@ public class playerMovement : MonoBehaviour {
 				if(i == 0)
 					fillAmount -= .05f;
 				else
-					nextJoint.fillAmount = Settings.partFillCapacity;
+					nextJoint.fillAmount -= .05f;
 
 			}
 
@@ -258,6 +257,7 @@ public class playerMovement : MonoBehaviour {
 		j.index = tailLength;
 		j.hooked = true;
 		j.owner = gameObject;
+
 		joints[tailLength-1].GetComponent<HingeJoint2D>().connectedBody = j.rigidbody2D;
 
 		HingeJoint2D curJoint = j.GetComponent<HingeJoint2D>();
