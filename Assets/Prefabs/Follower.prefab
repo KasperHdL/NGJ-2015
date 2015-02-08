@@ -128,8 +128,8 @@ MonoBehaviour:
   owner: {fileID: 0}
   trail_prefab: {fileID: 100000, guid: 7d77142e417884545b98313f517010d6, type: 2}
   trail_container: {fileID: 0}
-  parentJoint: {fileID: 0}
   amountFilled: 0
+  dash: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

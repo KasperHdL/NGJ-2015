@@ -312,6 +312,7 @@ GameObject:
   - 23: {fileID: 53409879}
   - 114: {fileID: 53409878}
   - 61: {fileID: 53409880}
+  - 82: {fileID: 53409883}
   m_Layer: 0
   m_Name: RefillArea
   m_TagString: Player
@@ -332,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refillSpeed: 0
+  mySound: {fileID: 0}
 --- !u!23 &53409879
 Renderer:
   m_ObjectHideFlags: 0
@@ -385,6 +387,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!82 &53409883
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: 8df18a6e128e91c479c72a2b4f648b8a,
+    type: 2}
+  m_PrefabInternal: {fileID: 385423315}
+  m_GameObject: {fileID: 53409877}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &146723891
 Prefab:
   m_ObjectHideFlags: 0
@@ -2640,6 +2701,7 @@ GameObject:
   - 23: {fileID: 850421509}
   - 114: {fileID: 850421508}
   - 61: {fileID: 850421510}
+  - 82: {fileID: 850421513}
   m_Layer: 0
   m_Name: RefillArea
   m_TagString: Player
@@ -2660,6 +2722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refillSpeed: 0
+  mySound: {fileID: 0}
 --- !u!23 &850421509
 Renderer:
   m_ObjectHideFlags: 0
@@ -2713,6 +2776,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!82 &850421513
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: 8df18a6e128e91c479c72a2b4f648b8a,
+    type: 2}
+  m_PrefabInternal: {fileID: 776403393}
+  m_GameObject: {fileID: 850421507}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 290d57eef9878e14599cd1379efbb7cb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &911197365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2852,6 +2974,7 @@ MonoBehaviour:
   trail_prefab: {fileID: 100000, guid: 7d77142e417884545b98313f517010d6, type: 2}
   trail_container: {fileID: 2063297902}
   amountFilled: 0
+  dash: 0
 --- !u!58 &936019009
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4339,6 +4462,7 @@ MonoBehaviour:
   trail_prefab: {fileID: 100000, guid: 7d77142e417884545b98313f517010d6, type: 2}
   trail_container: {fileID: 2063297902}
   amountFilled: 0
+  dash: 0
 --- !u!58 &1579885648
 CircleCollider2D:
   m_ObjectHideFlags: 0
